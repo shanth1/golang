@@ -8,7 +8,6 @@ import (
 	"math"
 	"math/rand"
 	"os"
-	"time"
 )
 
 var palette = []color.Color{color.Black, color.RGBA{0x00, 0xFF, 0x00, 0xFF}}
@@ -31,8 +30,10 @@ func lissajous(out io.Writer) {
 		delay   = 8     // Задержка между кадрами (единица - 10мс)
 	)
 
-	rand.Seed(time.Now().UTC().UnixNano())
-	freq := rand.Float64() * 3.0 // Относительная частота колебаний у
+	seed := int64(42)
+	randomGen := rand.New(rand.NewSource(seed))
+
+	freq := randomGen.Float64() * 3.0 // Относительная частота колебаний у
 	anim := gif.GIF{LoopCount: nframes}
 	phase := 0.0 // Разность фаз
 
