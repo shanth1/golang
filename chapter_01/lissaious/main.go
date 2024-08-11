@@ -1,4 +1,4 @@
-package main
+package lissajous
 
 import (
 	"image"
@@ -18,10 +18,10 @@ const (
 )
 
 func main() {
-	lissajous(os.Stdout)
+	Lissajous(os.Stdout)
 }
 
-func lissajous(out io.Writer) {
+func Lissajous(out io.Writer) {
 	const (
 		cycles  = 10    // Количество полных колебаний x
 		res     = 0.001 // Угловое разрешение
