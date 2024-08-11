@@ -1,5 +1,5 @@
 // Counting duplicate words in a file or via input
-package main
+package dup
 
 import (
 	"bufio"
