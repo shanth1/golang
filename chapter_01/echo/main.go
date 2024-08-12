@@ -1,5 +1,5 @@
 // Analogue of the echo function
-package echo
+package main
 
 import (
 	"fmt"

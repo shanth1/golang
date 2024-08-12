@@ -1,4 +1,4 @@
-package dup2
+package main
 
 import (
 	"fmt"

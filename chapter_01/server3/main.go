@@ -1,4 +1,4 @@
-package server3
+package main
 
 import (
 	"log"
