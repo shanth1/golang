@@ -16,17 +16,26 @@ const (
 	blacklndex = 1
 )
 
-func lissajous(out io.Writer) {
+type Options struct {
+	Cycles int
+}
+
+func lissajous(out io.Writer, params *Options) {
 	const (
-		cycles  = 10    // Количество полных колебаний x
-		res     = 0.001 // Угловое разрешение
-		size    = 100   // Канва изображения охватывает [size..+size]
-		nframes = 64    // Количество кадров анимации
-		delay   = 8     // Задержка между кадрами (единица - 10мс)
+		defaultCycles = 10    // Количество полных колебаний x
+		res           = 0.001 // Угловое разрешение
+		size          = 100   // Канва изображения охватывает [size..+size]
+		nframes       = 64    // Количество кадров анимации
+		delay         = 8     // Задержка между кадрами (единица - 10мс)
 	)
 
 	seed := int64(42)
 	randomGen := rand.New(rand.NewSource(seed))
+
+	cycles := float64(defaultCycles)
+	if params != nil && params.Cycles > 0 {
+		cycles = float64(params.Cycles)
+	}
 
 	freq := randomGen.Float64() * 3.0 // Относительная частота колебаний у
 	anim := gif.GIF{LoopCount: nframes}
